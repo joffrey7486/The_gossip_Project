@@ -3,7 +3,10 @@
     <div class="col">
         <div class="card h-100">
             <div class="card-body">
-                <h5 class="card-title"><%= gossip.title %></h5>
+
+                <%= puts "#" * 80
+                puts gossip.id %>
+                <h5 class="card-title"><a href="/gossips/<%=gossip.id%>"><%= gossip.title %></a></h5>
                 <p class="card-text"><%= gossip.content %></p>
                 <h6 class="card-subtitle mb-2 text-end fst-italic text-muted"><%= gossip.user.first_name %> <%= gossip.user.last_name %></h6>
             </div>
@@ -12,3 +15,4 @@
     <% end %>
     </div>
 </div>
+

@@ -1,0 +1,14 @@
+<div class="card text-center">
+  <div class="card-header">
+    <%= @gossip.user.first_name %> <%= @gossip.user.last_name %> 
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @gossip.title %></h5>
+    <p class="card-text"><%= @gossip.content %></p>
+    
+  </div>
+  <div class="card-footer text-muted">
+    <a href="/users/<%= @gossip.user.id %>" class="btn btn-primary">Plus d'info sur l'auteur</a>
+    <%= link_to "GoBackHome !!!", accueil_path, class: "btn btn-info" %>
+  </div>
+</div>
