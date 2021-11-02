@@ -1,0 +1,37 @@
+<h1>Créer ton potin</h1>
+
+<% if @gossip.errors.any? %>
+    <ul>
+        <% @gossip.errors.full_messages.each do |message| %>
+            <li class="alert alert-danger" role="alert"><%= message %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<% if @gossip_is_valid %>
+    <ul>
+        <li class="alert alert-sucess" role="alert">Votre potin a bien été crée !!!!!!!</li>
+    </ul>
+<% end %>
+
+
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+    
+    <div class="form_group">
+        <%= label_tag 'Title' %>
+        <%= text_field_tag 'title', @gossip.title %>
+        <br /> <br />
+    </div>
+
+    <div class="form_group">
+
+        <%= label_tag 'Content' %>
+        <%= text_area_tag 'content', @gossip.content %>
+        <br /> <br />
+    </div>
+    <div class="form_group">
+        <%= submit_tag "Create Post" %>
+    </div>
+    
+
+<% end %>

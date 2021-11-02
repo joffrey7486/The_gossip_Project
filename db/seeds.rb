@@ -53,7 +53,7 @@ puts "#{Tag.all.count} tags sont en base de données."
 # Ajout de n Gossip à la base de données
 nb_gossips.times do
   gossip = Gossip.create(
-  title: Faker::Lorem.sentence,
+  title: Faker::Lorem.sentence(word_count: 1),
   content: Faker::ChuckNorris.fact,
   user: User.all.sample
   )
@@ -63,3 +63,16 @@ nb_gossips.times do
   end
 end
 puts "#{Gossip.all.count} gossips sont en base de données"
+
+# Ajout d'un User "Anonymous"
+User.create(
+  first_name: "anonymous",
+  last_name: "anonymous",
+  description: Faker::Lorem.sentence,
+  email: Faker::Internet.email,
+  age: rand(18..70),
+  city: City.all.sample
+  )
+
+puts "L'utilisateur --anonymous-- a bien été crée"
+
