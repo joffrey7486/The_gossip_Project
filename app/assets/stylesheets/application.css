@@ -1,0 +1,13 @@
+body {
+    color: rgba(24, 35, 89, 0.85);
+    font-size: .875rem;
+    letter-spacing: 0;
+    line-height: 1.8;
+    background-color: #c8cfd2;
+    font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+

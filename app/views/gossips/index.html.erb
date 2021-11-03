@@ -1,12 +1,16 @@
+<!-- Affiche tous les gossips en base de donnée -->
 <% @all_gossips.each do |gossip| %>
-<div class="col">
-    <div class="card h-100">
-        <div class="card-body">
-            <h5 class="card-title"><a href="/gossips/<%=gossip.id%>"><%= gossip.title %></a></h5>
-            <p class="card-text"><%= gossip.content %></p>
-            <p class="card-text"><%= gossip.comments.count %> commentaire(s)</p>
-            <h6 class="card-subtitle mb-2 text-end fst-italic text-muted"><%= gossip.user.first_name %> <%= gossip.user.last_name %></h6>
-        </div>
+  <div class="card-body p-2 p-sm-3 mb-2 bg-light rounded-3 shadow">
+    <div class="media forum-item"> 
+      <a href="<%= gossip.user.avatar_link %>"><img src="<%= gossip.user.avatar_link %>" class="mr-3 rounded-circle border" alt="User" width="50"></a>
+      <div>
+        <h6><a href="<%= gossip_path(gossip.id) %>" class="text-body"><%= gossip.title %></a></h6>
+        <p class="text-secondary"><%= gossip.content %></p>
+        <p class="text-muted fw-light"><a href="<%= user_path(gossip.user_id) %>"><%= gossip.user.first_name %> <%= gossip.user.last_name %></a> l'a comméré il y a <span class="text-secondary fw-bold"><%= time_ago_in_words(gossip.created_at) %></span></p>
+      </div>
+      <div class="text-muted small text-center align-self-center">
+        <span><i class="far fa-comment ml-2"></i> <%= gossip.comments.count %> commentaire<%= "s" if gossip.comments.count > 1%></span>
+      </div>
     </div>
-</div>
+  </div>
 <% end %>
