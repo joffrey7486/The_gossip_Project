@@ -6,8 +6,6 @@ class GossipsController < ApplicationController
   def show
     @gossip = Gossip.find(params[:id])
     @gossip_is_new = true if (Time.now - 10) < @gossip.created_at
-    puts "#" * 80
-    puts @gossip_is_new
   end
 
   def new
@@ -32,8 +30,11 @@ class GossipsController < ApplicationController
 
   def update
     @gossip = Gossip.find(params[:id])
-    @gossip.update()
-    redirect_to gossip_path(@gossip.id)
+    if @gossip.update(gossip_params)
+      redirect_to gossip_path(@gossip.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

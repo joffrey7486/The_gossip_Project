@@ -1,0 +1,12 @@
+<!-- Formulaire d'ajout d'un nouveau commentaire -->
+
+<%= form_for([@gossip, @comment]) do |f| %>
+    <div class="form-group">
+        <label>Le contenu du potin</label>
+        <%= f.text_area :content, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <button type="submit">Modifier le potin</button>
+    </div>
+<% end %>

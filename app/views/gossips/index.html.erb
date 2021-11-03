@@ -1,14 +1,12 @@
-<div class="row row-cols-1 row-cols-md-4 g-4 m-5">
-    <% @all_gossips.each do |gossip| %>
-    <div class="col">
-        <div class="card h-100">
-            <div class="card-body">
-                <h5 class="card-title"><a href="/gossips/<%=gossip.id%>"><%= gossip.title %></a></h5>
-                <p class="card-text"><%= gossip.content %></p>
-                <h6 class="card-subtitle mb-2 text-end fst-italic text-muted"><%= gossip.user.first_name %> <%= gossip.user.last_name %></h6>
-            </div>
+<% @all_gossips.each do |gossip| %>
+<div class="col">
+    <div class="card h-100">
+        <div class="card-body">
+            <h5 class="card-title"><a href="/gossips/<%=gossip.id%>"><%= gossip.title %></a></h5>
+            <p class="card-text"><%= gossip.content %></p>
+            <p class="card-text"><%= gossip.comments.count %> commentaire(s)</p>
+            <h6 class="card-subtitle mb-2 text-end fst-italic text-muted"><%= gossip.user.first_name %> <%= gossip.user.last_name %></h6>
         </div>
     </div>
-    <% end %>
-    </div>
 </div>
+<% end %>

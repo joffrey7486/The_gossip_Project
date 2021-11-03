@@ -4,6 +4,7 @@ nb_users = 10
 nb_cities = 10
 nb_gossips = 20
 nb_tags = 10
+nb_comments = 5
 
 Faker::Config.locale = 'fr'
 
@@ -12,6 +13,7 @@ puts "Purge de la base de données..."
 Gossip.destroy_all
 User.destroy_all
 City.destroy_all
+Comment.destroy_all
 Tag.destroy_all
 
 puts "Début de l'insémination..."
@@ -34,7 +36,8 @@ nb_users.times do |i|
     description: Faker::Lorem.sentence,
     email: Faker::Internet.email,
     age: rand(18..70),
-    city: City.all[i]
+    city: City.all[i],
+    avatar_link: Faker::Avatar.image
     )
 end
 
@@ -71,8 +74,20 @@ User.create(
   description: Faker::Lorem.sentence,
   email: Faker::Internet.email,
   age: rand(18..70),
-  city: City.all.sample
+  city: City.all.sample,
+  avatar_link: Faker::Avatar.image
   )
 
-puts "L'utilisateur --anonymous-- a bien été crée"
+puts "L'utilisateur \"anonymous\" a bien été crée"
 
+Gossip.all.each do |gossip|
+  rand(0..nb_comments).times do |i|
+    Comment.create(
+      content: "Ceci est le commentaire numéro #{i}",
+      gossip: gossip,
+      user: User.all.sample
+    )
+  end
+end
+
+puts "#{Comment.all.count} commentaires sont en base de données"

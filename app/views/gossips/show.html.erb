@@ -6,15 +6,54 @@
 
 <div class="card text-center">
   <div class="card-header">
-    <%= @gossip.user.first_name %> <%= @gossip.user.last_name %> 
+    <%= @gossip.user.first_name %> <%= @gossip.user.last_name %> <br />
+    <%= @gossip.user.city.name %>
   </div>
   <div class="card-body">
     <h5 class="card-title"><%= @gossip.title %></h5>
     <p class="card-text"><%= @gossip.content %></p>
-    
   </div>
+
+  <!-- Liste de commentaire avec leur user name-->
+  <div class="card text-center">
+    <ul>
+      <% @gossip.comments.each do |comment| %>
+        <li class="card-text"><%= comment.user.first_name %> <%= comment.user.last_name %> : <%= comment.content %>
+          <a href="<%= edit_gossip_comment_path(@gossip.id, comment.id) %>" class="btn btn-warning">Modifier le potin</a>
+        
+            <%= form_tag gossip_comment_path(@gossip.id, comment.id), method: "delete" do %>
+            <%= submit_tag "Supprimer", class:"btn btn-danger" %>
+            <% end %>
+        
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+
+<!-- Formulaire pour ajouter un commentaire -->
+
+
+<%= form_tag(gossip_comments_path(@gossip.id), :method => "post") do %>
+  <%= text_field_tag :content, params[:comment], placeholder: "Balance ton com !!!" %>
+  <%= submit_tag "Submit" %>
+<% end %>
+
+<!-- Actions sur le potin -->
+
   <div class="card-footer text-muted">
     <a href="/users/<%= @gossip.user.id %>" class="btn btn-primary">Plus d'info sur l'auteur</a>
+    <a href="<%= edit_gossip_path(@gossip.id) %>" class="btn btn-warning">Modifier le potin</a>
+
+    <%= form_tag gossip_path(@gossip.id), method: "delete" do %>
+    <%= submit_tag "Supprimer le potin", class:"btn btn-danger" %>
+    <% end %>
+
+    <a href="<%= city_path(@gossip.user.city.id) %>" class="btn btn-primary">Voir les potins de cette ville !!!!!!!!</a>
     <%= link_to "GoBackHome !!!", gossips_path, class: "btn btn-info" %>
+    
+
   </div>
 </div>
+
+
