@@ -13,7 +13,7 @@ Voici les requis pour la version initiale :
 1. L'application roulera sur Rails avec une base de données en PostegreSQL
 1. Vérifer tous les branchements en console
 1. Seeder la base de donnée
-1. Les pages html à créer pour aujourd'hui :
+1. Les pages html à créer pour le premier jour :
     - La page d'accueil, bien entendu. Cette page d'accueil affichera tous les potins créés
     - La page qui présente l'équipe de The Gossip Project, aka toi et ton binome
     - La page de contact où tu vas balancer une superbe adresse de contact
@@ -21,11 +21,9 @@ Voici les requis pour la version initiale :
 
 ## 2. Index des révisions
 
-
-
-
 - Version initiale
 - [Rev 1](https://github.com/joffrey7486/The_gossip_Project/commit/54ab88e9723639ff56a50c1ec96f2c6aa69770eb) : Appliquer la méthode REST pour la gestion des potins
+- [Rev 2](https://github.com/joffrey7486/The_gossip_Project/commit/f93e01ba018733301add6f318f14890d1c295e22) : Mettre en place le CRUD pour les Gossips + commencer à améliorer le front-end
 
 ## 3. Prérequis à l'installation
 
@@ -48,4 +46,4 @@ Voici les requis pour la version initiale :
 
 Une belle semaine en pair-programming chez [THP](https://www.thehackingproject.org) !
 
-Les try-harders du jour pour vous servir : [joffrey7486](https://github.com/joffrey7486) et [fleopaulD](https://github.com/fleopaulD) avec le précieux soutien de la communauté THP :sparkling_heart:
+Les try-harders du jour, pour vous servir : [joffrey7486](https://github.com/joffrey7486) et [fleopaulD](https://github.com/fleopaulD) avec le précieux soutien de la communauté THP :sparkling_heart:
