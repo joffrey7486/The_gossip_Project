@@ -33,11 +33,11 @@ nb_users.times do |i|
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    description: Faker::Lorem.sentence,
+    description: Faker::Hacker.say_something_smart ,
     email: Faker::Internet.email,
     age: rand(18..70),
     city: City.all[i],
-    avatar_link: Faker::Avatar.image
+    avatar_link: Faker::Avatar.image(size: "50x50", set: "set4")
     )
 end
 
@@ -56,7 +56,7 @@ puts "#{Tag.all.count} tags sont en base de données."
 # Ajout de n Gossip à la base de données
 nb_gossips.times do
   gossip = Gossip.create(
-  title: Faker::Lorem.sentence(word_count: 1),
+  title: Faker::Lorem.paragraph_by_chars(number: 15).chop,
   content: Faker::ChuckNorris.fact,
   user: User.all.sample
   )
@@ -71,7 +71,7 @@ puts "#{Gossip.all.count} gossips sont en base de données"
 User.create(
   first_name: "anonymous",
   last_name: "anonymous",
-  description: Faker::Lorem.sentence,
+  description: "Je suis l'utilisateur Anonymous !" ,
   email: Faker::Internet.email,
   age: rand(18..70),
   city: City.all.sample,
@@ -83,7 +83,7 @@ puts "L'utilisateur \"anonymous\" a bien été crée"
 Gossip.all.each do |gossip|
   rand(0..nb_comments).times do |i|
     Comment.create(
-      content: "Ceci est le commentaire numéro #{i}",
+      content: "Ceci est le commentaire numéro #{i+1}",
       gossip: gossip,
       user: User.all.sample
     )
@@ -91,3 +91,4 @@ Gossip.all.each do |gossip|
 end
 
 puts "#{Comment.all.count} commentaires sont en base de données"
+puts "Fin du seed."
