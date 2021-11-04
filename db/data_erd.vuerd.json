@@ -3,9 +3,9 @@
     "version": "2.2.6",
     "width": 2000,
     "height": 2000,
-    "scrollTop": -229,
-    "scrollLeft": -594,
-    "zoomLevel": 0.8,
+    "scrollTop": -73,
+    "scrollLeft": -592,
+    "zoomLevel": 0.9,
     "show": {
       "tableComment": true,
       "columnComment": true,
@@ -232,9 +232,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 1070.6095,
-          "top": 276.1925,
-          "zIndex": 5,
+          "left": 1069.4984,
+          "top": 398.4142,
+          "zIndex": 23,
           "widthName": 60,
           "widthComment": 60
         },
@@ -317,9 +317,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 1552.5438,
-          "top": 343.1072,
-          "zIndex": 6,
+          "left": 1612.5436,
+          "top": 453.1073,
+          "zIndex": 24,
           "widthName": 60,
           "widthComment": 60
         },
@@ -381,7 +381,7 @@
           "active": false,
           "left": 1539.2133,
           "top": 90.3669,
-          "zIndex": 3,
+          "zIndex": 2,
           "widthName": 60,
           "widthComment": 60
         },
@@ -509,10 +509,10 @@
           }
         ],
         "ui": {
-          "active": true,
+          "active": false,
           "left": 566.8398,
           "top": 63.1531,
-          "zIndex": 7,
+          "zIndex": 20,
           "widthName": 60,
           "widthComment": 60
         },
@@ -597,7 +597,7 @@
           "active": false,
           "left": 1085.7559,
           "top": 65.7968,
-          "zIndex": 2,
+          "zIndex": 1,
           "widthName": 140.76611328125,
           "widthComment": 60
         },
@@ -705,12 +705,120 @@
           "active": false,
           "left": 590.1484,
           "top": 381.3866,
-          "zIndex": 4,
+          "zIndex": 3,
           "widthName": 61.9599609375,
           "widthComment": 60
         },
         "visible": true,
         "id": "2c7478f3-9ab3-4576-89df-47f2ec922c39"
+      },
+      {
+        "name": "likes",
+        "comment": "",
+        "columns": [
+          {
+            "name": "like_id",
+            "comment": "",
+            "dataType": "INTEGER",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "c02543c6-8138-42b8-b9b7-7d56a7777db9"
+          },
+          {
+            "name": "",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "1a75dc8a-3565-4027-82be-531e1f21cc7a"
+          },
+          {
+            "name": "user_id",
+            "comment": "",
+            "dataType": "INTEGER",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "240468c9-8a58-4604-a717-22c3807a133c"
+          },
+          {
+            "name": "gossip_id",
+            "comment": "",
+            "dataType": "INTEGER",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "ec427dae-72e6-4253-b2d0-37174fe08bd9"
+          }
+        ],
+        "ui": {
+          "active": true,
+          "left": 1343.1097,
+          "top": 218.5553,
+          "zIndex": 25,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "e37f8d5e-5c90-4a23-9842-4ff9338ab93a"
       }
     ],
     "indexes": []
@@ -729,8 +837,8 @@
           "columnIds": [
             "dd9bca14-e3cd-49a0-9216-b88fbf592934"
           ],
-          "x": 1552.5438,
-          "y": 408.3572,
+          "x": 1612.5436,
+          "y": 518.3573,
           "direction": "left"
         },
         "end": {
@@ -738,8 +846,8 @@
           "columnIds": [
             "8b88ab91-099d-4301-a4ed-86f599f01d9e"
           ],
-          "x": 1422.4766875,
-          "y": 392.6925,
+          "x": 1421.3655875,
+          "y": 514.9141999999999,
           "direction": "right"
         },
         "constraintName": "fk_cities_to_users",
@@ -755,8 +863,8 @@
           "columnIds": [
             "15d00124-7357-4ea0-8cda-056bc0540192"
           ],
-          "x": 1070.6095,
-          "y": 334.4425,
+          "x": 1069.4984,
+          "y": 573.1641999999999,
           "direction": "left"
         },
         "end": {
@@ -765,7 +873,7 @@
             "017dc1f8-e106-48bf-ab8d-c35bab7c9cb1"
           ],
           "x": 913.8398,
-          "y": 191.7781,
+          "y": 148.9031,
           "direction": "right"
         },
         "constraintName": "fk_users_to_gossips",
@@ -782,7 +890,7 @@
             "b4e4d29f-1ae7-478d-a164-118dc47283da"
           ],
           "x": 913.8398,
-          "y": 106.0281,
+          "y": 91.73643333333334,
           "direction": "right"
         },
         "end": {
@@ -859,8 +967,8 @@
           "columnIds": [
             "15d00124-7357-4ea0-8cda-056bc0540192"
           ],
-          "x": 1070.6095,
-          "y": 450.9425,
+          "x": 1069.4984,
+          "y": 456.6642,
           "direction": "left"
         },
         "end": {
@@ -875,6 +983,58 @@
         "constraintName": "fk_users_to_comments",
         "visible": true,
         "id": "cf6a7e1a-2418-4730-a219-53ac96df5707"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "9dcc988d-0c17-42b3-b485-f1867345a849",
+          "columnIds": [
+            "15d00124-7357-4ea0-8cda-056bc0540192"
+          ],
+          "x": 1245.43199375,
+          "y": 398.4142,
+          "direction": "top"
+        },
+        "end": {
+          "tableId": "e37f8d5e-5c90-4a23-9842-4ff9338ab93a",
+          "columnIds": [
+            "240468c9-8a58-4604-a717-22c3807a133c"
+          ],
+          "x": 1343.1097,
+          "y": 331.8053,
+          "direction": "left"
+        },
+        "constraintName": "fk_users_to_likes",
+        "visible": true,
+        "id": "02a41bd8-31f4-4047-8747-a25672abb8ed"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "0956b1f7-0d3a-4eca-8818-0877b2107400",
+          "columnIds": [
+            "b4e4d29f-1ae7-478d-a164-118dc47283da"
+          ],
+          "x": 913.8398,
+          "y": 206.06976666666665,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "e37f8d5e-5c90-4a23-9842-4ff9338ab93a",
+          "columnIds": [
+            "ec427dae-72e6-4253-b2d0-37174fe08bd9"
+          ],
+          "x": 1343.1097,
+          "y": 256.3053,
+          "direction": "left"
+        },
+        "constraintName": "fk_gossips_to_likes",
+        "visible": true,
+        "id": "5f4674b3-f76e-4e3b-9dfe-cc7656e79dcc"
       }
     ]
   }

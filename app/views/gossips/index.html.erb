@@ -10,8 +10,15 @@
         <p class="text-secondary"><%= gossip.content %></p>
         <p class="text-muted fw-light"><a href="<%= user_path(gossip.user_id) %>"><%= gossip.user.first_name %> <%= gossip.user.last_name %></a> l'a comméré il y a <span class="text-secondary fw-bold"><%= time_ago_in_words(gossip.created_at) %></span></p>
       </div>
-      <div class="text-muted small text-center align-self-center">
-        <span><i class="far fa-comment ml-2"></i> <%= gossip.comments.count %> commentaire<%= "s" if gossip.comments.count > 1%></span>
+      <div class="text-muted small text-center ">
+        
+
+        <% if logged_in?%>
+        <span><%= gossip.likes.count %> <i class="far fa-heart ml-2"></i></span>
+
+
+
+        <span><i class="far fa-comment ml-2"></i> <%= gossip.comments.count %></span>
       </div>
     </div>
   </div>

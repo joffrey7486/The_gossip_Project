@@ -15,6 +15,7 @@ User.destroy_all
 City.destroy_all
 Comment.destroy_all
 Tag.destroy_all
+Like.destroy_all
 
 puts "Début de l'insémination..."
 
@@ -78,7 +79,13 @@ Gossip.all.each do |gossip|
       user: User.all.sample
     )
   end
+  rand(0..20).times do |like|
+      Like.create!(user: User.all.sample, gossip: gossip)
+  end
 end
 
+
 puts "#{Comment.all.count} commentaires sont en base de données"
+puts "#{Like.all.count} likes sont en base de données"
+
 puts "Fin du seed."
