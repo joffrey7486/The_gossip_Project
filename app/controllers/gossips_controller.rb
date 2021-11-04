@@ -1,6 +1,7 @@
 class GossipsController < ApplicationController
   def index
     @all_gossips = Gossip.all
+    @user = User.all
   end
 
   def show

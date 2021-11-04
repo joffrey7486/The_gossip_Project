@@ -24,6 +24,11 @@
         <ul class="navbar-nav">
           <li class="nav-item active">
             <%= link_to "Create", new_gossip_path, class: "nav-link" %>
+
+            <%= form_tag session_path(session.id), method: "delete" do %>
+            <%= submit_tag "Supprimer", class:"btn btn-danger" %>
+            <% end %>
+
           </li>
         </ul>
       </div>

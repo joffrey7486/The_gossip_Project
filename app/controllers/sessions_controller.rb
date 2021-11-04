@@ -23,7 +23,10 @@ class SessionsController < ApplicationController
       end
       
     def destroy
-        session.destroy(:user_id)
+        puts "#"*80
+        puts session
+        session.delete(:user_id)
         redirect_to root_path
     end
 end
+
