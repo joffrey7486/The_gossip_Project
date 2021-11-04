@@ -1,11 +1,8 @@
 class SessionsController < ApplicationController
     def new
-        
     end
 
     def create
-        puts "#"*80
-        puts params
         # cherche s'il existe un utilisateur en base avec l’e-mail
         user = User.find_by(email: params[:email])
       

@@ -1,0 +1,56 @@
+<!-- Formulaire de création d'utilisateur -->
+<main class="form-signin">
+  <%= form_tag url_for(action: 'create'), method: 'post' do%>
+    <img class="mb-4" src="https://www.roberthalf.com/sites/default/files/styles/full_width_content_image_1x_extra_large_1036/public/2020-01/workplace-gossip.jpg?itok=byThoVuQ" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">S'inscrire</h1>
+    
+    <%= label_tag 'Ton prénom'%>
+    <div class="form-floating">
+        <%= text_field_tag 'first_name', value = nil, class: "form-control"%>
+    </div>
+
+
+    <%= label_tag 'Ton nom'%>
+    <div class="form-floating">
+        <%= text_field_tag 'last_name', value = nil, class: "form-control"%>
+    </div>
+
+
+    <%= label_tag 'Ton adresse mail'%>
+    <div class="form-floating">
+        <%= text_field_tag 'email', value = nil, class: "form-control"%>
+    </div>
+
+    <%= label_tag 'Ton age'%>
+    <div class="form-floating">
+        <%= text_field_tag 'age', value = nil, class: "form-control"%>
+    </div>
+
+    <%= label_tag 'Descrition'%>
+    <div class="form-floating">
+        <%= text_area_tag 'description', value = nil, class: "form-control"%>
+    </div>
+    
+    <%= label_tag 'Mot de passe'%>
+    <div class="form-floating">
+        <%= password_field_tag 'password', value = nil, class: "form-control" %>
+    </div>
+    
+    <%= label_tag 'Confirmation de mot de passe'%>
+    <div class="form-floating">
+        <%= password_field_tag 'password_confirmation', value = nil, class: "form-control" %>
+    </div>
+
+    <%= label_tag 'Ta ville'%>
+    <div class="form-floating">
+        <%= select_tag 'city', options_for_select(@city_options), class: "form-control" %>
+    </div>
+
+
+    <%= submit_tag "Submit", class: "mt-4 w-100 btn btn-lg btn-primary" %>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; 2017–2021</p>
+    
+
+    
+  <% end %>
+</main>

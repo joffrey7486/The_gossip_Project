@@ -70,20 +70,6 @@ nb_gossips.times do
 end
 puts "#{Gossip.all.count} gossips sont en base de données"
 
-# Ajout d'un User "Anonymous"
-User.create(
-  first_name: "anonymous",
-  last_name: "anonymous",
-  description: "Je suis l'utilisateur Anonymous !" ,
-  email: Faker::Internet.email,
-  age: rand(18..70),
-  city: City.all.sample,
-  avatar_link: Faker::Avatar.image,
-  password: "anonymous"
-  )
-
-puts "L'utilisateur \"anonymous\" a bien été crée"
-
 Gossip.all.each do |gossip|
   rand(0..nb_comments).times do |i|
     Comment.create(

@@ -10,6 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application' %>
+    <!-- Turbolink nécessaire pour faire fonctionner les liens "link_to" avec la méthode "delete" -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
   <body>
 
@@ -20,16 +24,16 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <%= link_to "Create", new_gossip_path, class: "nav-link" %>
-
-            <%= form_tag session_path(session.id), method: "delete" do %>
-            <%= submit_tag "Supprimer", class:"btn btn-danger" %>
-            <% end %>
-
-          </li>
+          <% if logged_in? %>
+            <li class="nav-item active"><% link_to "Mon profil", user_path(current_user.id)%></li>
+            <li class="nav-item active"><%= link_to "Create", new_gossip_path, class: "nav-link btn btn-success" %></li> 
+            <li class="nav-item active"><%= link_to "Quitter la session", session_path(session.id), method: :delete, class: "btn btn-danger mx-3" %></li>
+          <% else %>    
+            <li class="nav-item active"><%= link_to "S'enregistrer", new_user_path, class: "btn btn-primary" %></li>  
+            <li class="nav-item active"><%= link_to "Se connecter", new_session_path, class: "btn btn-outline-primary mx-3 " %></li>  
+          <% end %>
         </ul>
       </div>
       </nav>

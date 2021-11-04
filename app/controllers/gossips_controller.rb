@@ -1,4 +1,7 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, except: [:index]
+  before_action :good_user, except: [:show, :index, :create, :new]
+
   def index
     @all_gossips = Gossip.all
     @user = User.all
@@ -14,13 +17,17 @@ class GossipsController < ApplicationController
   end
 
   def create
-    @gossip = Gossip.new(title: params[:title], content: params[:content], user: User.find_by(first_name: "anonymous")) # avec xxx qui sont les données obtenues à partir du formulaire
+    @gossip = Gossip.new(
+      title: params[:title], 
+      content: params[:content], 
+      user: current_user)
     if @gossip.save # essaie de sauvegarder en base @gossip
       # si ça marche, il redirige vers la page d'index du site
       @gossip_is_valid = true
       redirect_to gossip_path(@gossip.id)
     else
       @gossip_is_valid = false
+      flash[:success] = "Potin bien créé !"
       render 'new'# sinon, il render la view new (qui est celle sur laquelle on est déjà)
     end
   end
@@ -45,6 +52,8 @@ class GossipsController < ApplicationController
   end
 
   private 
+
+
   def gossip_params
     params.require(:gossip).permit(:title, :content)
   end
