@@ -30,14 +30,17 @@ puts "#{City.all.count} villes sont en base de données."
   
 # Ajout de n User à la base de données
 nb_users.times do |i|
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
   User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
+    first_name: first_name,
+    last_name: last_name,
     description: Faker::Hacker.say_something_smart ,
     email: Faker::Internet.email,
     age: rand(18..70),
     city: City.all[i],
-    avatar_link: Faker::Avatar.image(size: "50x50", set: "set4")
+    avatar_link: Faker::Avatar.image(size: "50x50", set: "set4"),
+    password: first_name + last_name
     )
 end
 
@@ -75,7 +78,8 @@ User.create(
   email: Faker::Internet.email,
   age: rand(18..70),
   city: City.all.sample,
-  avatar_link: Faker::Avatar.image
+  avatar_link: Faker::Avatar.image,
+  password: "anonymous"
   )
 
 puts "L'utilisateur \"anonymous\" a bien été crée"

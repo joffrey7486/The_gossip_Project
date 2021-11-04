@@ -1,0 +1,24 @@
+<!-- Formulaire de connexion utilisateur -->
+<main class="form-signin">
+  <%= form_tag url_for(action: 'create'), method: 'post' do%>
+    <img class="mb-4" src="https://www.roberthalf.com/sites/default/files/styles/full_width_content_image_1x_extra_large_1036/public/2020-01/workplace-gossip.jpg?itok=byThoVuQ" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Se connecter</h1>
+    
+    <%= label_tag 'Email'%>
+    <div class="form-floating">
+        <%= text_field_tag 'email', value = nil, class: "form-control"%>
+    </div>
+    
+    <%= label_tag 'Mot de passe'%>
+    <div class="form-floating">
+        <%= text_field_tag 'password', value = nil, class: "form-control" %>
+    </div>
+
+    <%= submit_tag "Se connecter", class: "mt-4 w-100 btn btn-lg btn-primary" %>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; 2017–2021</p>
+
+    
+  <% end %>
+</main>
+
+  
