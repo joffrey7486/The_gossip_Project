@@ -1,6 +1,6 @@
 <h1>Tous les ragots de <%= @city.name %></h1>
 
-<!-- Affiche tous les gossips en base de donnée -->
+<!-- Affiche tous les gossips d'une ville -->
 <% @all_city_gossips.each do |gossip| %>
   <div class="card card-<%= rand(1..5) %>">
     <div class="media forum-item"> 

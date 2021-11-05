@@ -1,4 +1,4 @@
-<h1>Auteur</h1>
+<h1>Toutes les infos sur <%= @user.first_name %></h1>
 
 <div class="card text-center" style="width: 100%;">
   <div class="card-body">
@@ -9,10 +9,10 @@
     <li class="list-group-item">Né en <%= Time.now.year - @user.age %></li>
     <li class="list-group-item"><%= @user.email %></li>
     <li class="list-group-item">Habite à <%= @user.city.name %></li>
-    <li class="list-group-item">Il a publié <%= @user.gossips.count %> gossip(s)</li>
+    <li class="list-group-item">A publié <%= @user.gossips.count %> gossip<%= "s" if @user.gossips.count > 1 %></li>
   </ul>
   <div class="card-body">
-    <a href="<%= city_path(@user.city.id) %>" class="btn btn-primary">Voir les potins de cette ville !!!!!!!!</a>
-    <%= link_to "GoBackHome !!!", gossips_path, class: "btn btn-secondary" %>
+    <a href="<%= city_path(@user.city.id) %>" class="btn btn-primary">Voir tous les potins de sa ville</a>
+    <%= link_to "Retour à l'accueil", gossips_path, class: "btn btn-secondary" %>
   </div>
 </div>

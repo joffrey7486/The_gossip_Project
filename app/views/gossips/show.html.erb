@@ -13,11 +13,20 @@
     <a href="<%= @gossip.user.avatar_link %>"><img src="<%= @gossip.user.avatar_link %>" class="mr-3 rounded-circle border" alt="User" width="50"></a>
     <div class="text-header-card">
       <h4><%= @gossip.user.first_name %> <%= @gossip.user.last_name %> <br /></h4>
-      <h4><%= @gossip.user.city.name %></h4>
+      <h4>à <%= @gossip.user.city.name %></h4>
     </div>
+
+
+
   </div>
   <h6 class="card__title"><%= @gossip.title %></h6> <br />
+
   <h6 class="card__title"><%= @gossip.content %></h6>
+
+
+
+
+
   <p class="card__apply">   
     <div class="card-footer text-muted">
       <%= link_to "Auteur", user_path(@gossip.user.id), class: "card__link" %>
@@ -25,35 +34,38 @@
       <%= link_to "Supprimer", gossip_path(@gossip.id), method: :delete, class: "card__link" %>
       <%= link_to "Ville", city_path(@gossip.user.city.id), class: "card__link" %>
       <%= link_to "Accueil", gossips_path, class: "card__link" %>
+      <% if Like.find_by(user_id: current_user.id, gossip_id: @gossip.id) %> 
+      <a href="<%= gossip_like_path(@gossip.id, current_user.id) %>" data-method="delete" class="card__link">
+      <% else %>
+        <a href="<%= gossip_likes_path(@gossip.id, :index) %>" data-method="post" class="card__link">          
+      <% end %>
+      <%= @gossip.likes.count %> <i class="fa<%= Like.find_by(user_id: current_user.id, gossip_id: @gossip.id) ? "s" : "r" %> fa-heart ml-2"></i></a>
     </div>
   </p>
 </div>
 
-
-
-
-
-
-
   <!-- Liste de commentaire avec leur user name-->
-  <div class="card card-3">
-    <ul>
-      <% @gossip.comments.each do |comment| %>
-        <li class="card__title"><%= comment.user.first_name %> <%= comment.user.last_name %> : <%= comment.content %><br />
-          <% if comment.user == current_user %>
-            <%= link_to "Modifier", edit_gossip_comment_path(@gossip.id, comment.id), class: "card__link card_link_com" %>
-            <%= link_to "Supprimer", gossip_comment_path(@gossip.id, comment.id), method: :delete, class:"card__link card_link_com"%>
-          <% end%>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+<div class="card card-3">
+  <ul>
+  <% if @gossip.comments.count < 1 %>
+  <li class = "card__title">Aucun commentaire pour le moment... À toi de jouer !</li>
+  <% end %>
+    <% @gossip.comments.each do |comment| %>
+      <li class="card__title"><%= comment.user.first_name %> <%= comment.user.last_name %> : <%= comment.content %><br />
+        <% if comment.user == current_user %>
+          <%= link_to "Modifier", edit_gossip_comment_path(@gossip.id, comment.id), class: "card__link card_link_com" %>
+          <%= link_to "Supprimer", gossip_comment_path(@gossip.id, comment.id), method: :delete, class:"card__link card_link_com"%>
+        <% end%>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 
 <!-- Formulaire pour ajouter un commentaire -->
 
 <%= form_tag(gossip_comments_path(@gossip.id), class:"new-com", :method => "post") do %>
-  <%= text_field_tag :content, params[:comment], class:"new-com", placeholder: "Balance ton com !!!" %>
+  <%= text_field_tag :content, params[:comment], class:"new-com", placeholder: "T'en penses quoi ?" %>
   <%= submit_tag "Submit", class:'btn btn-primary' %>
 <% end %>
 

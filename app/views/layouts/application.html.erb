@@ -28,8 +28,8 @@
         <ul class="navbar-nav">
           <% if logged_in? %>
             <li class="nav-item active"><% link_to "Mon profil", user_path(current_user.id)%></li>
-            <li class="nav-item active"><%= link_to "Create", new_gossip_path, class: "nav-link btn btn-success" %></li> 
-            <li class="nav-item active"><%= link_to "Quitter la session", session_path(session.id), method: :delete, class: "btn btn-danger mx-3" %></li>
+            <li class="nav-item active"><%= link_to "Raconter un ragot", new_gossip_path, class: "nav-link btn btn-success" %></li> 
+            <li class="nav-item active"><%= link_to "Quitter la session", session_path(session.id), method: :delete, class: "nav-link btn btn-danger mx-3" %></li>
           <% else %>    
             <li class="nav-item active"><%= link_to "S'enregistrer", new_user_path, class: "btn btn-primary" %></li>  
             <li class="nav-item active"><%= link_to "Se connecter", new_session_path, class: "btn btn-outline-primary mx-3 " %></li>  
