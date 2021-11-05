@@ -28,6 +28,10 @@ module ApplicationHelper
         redirect_to gossip_path(@gossip.id)
     end
   end
+
+  def has_liked?(gossip)
+    !Like.find_by(user_id: current_user.id, gossip_id: gossip.id).nil?
+  end
 end
 
 

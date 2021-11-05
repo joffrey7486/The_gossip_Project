@@ -2,7 +2,7 @@
 
 
 <% @all_gossips.each do |gossip| %>
-  <div class="card-body p-2 p-sm-3 mb-2 bg-light rounded-3 shadow">
+  <div class="card card-<%= rand(1..5) %>">
     <div class="media forum-item"> 
       <a href="<%= gossip.user.avatar_link %>"><img src="<%= gossip.user.avatar_link %>" class="mr-3 rounded-circle border" alt="User" width="50"></a>
       <div>
@@ -11,19 +11,19 @@
         <p class="text-muted fw-light"><a href="<%= user_path(gossip.user_id) %>"><%= gossip.user.first_name %> <%= gossip.user.last_name %></a> l'a comméré il y a <span class="text-secondary fw-bold"><%= time_ago_in_words(gossip.created_at) %></span></p>
       </div>
       <div class="text-muted small text-center ">
-        
-
-        <% if logged_in?%>
-        <span><%= gossip.likes.count %> <i class="far fa-heart ml-2"></i></span>
-
-
-
+      
+        <% if logged_in? %>
+          <% if Like.find_by(user_id: current_user.id, gossip_id: gossip.id) %> 
+              <a href="<%= gossip_like_path(gossip.id, current_user.id) %>" data-method="delete">
+            <% else %>
+              <a href="<%= gossip_likes_path(gossip.id, :index) %>" data-method="post">          
+            <% end %>
+            <%= gossip.likes.count %> <i class="fa<%= Like.find_by(user_id: current_user.id, gossip_id: gossip.id) ? "s" : "r" %> fa-heart ml-2"></i></a>
+          <% else %>  
+            <%= gossip.likes.count %> <i class="far fa-heart ml-2"></i>
+          <% end %>	
         <span><i class="far fa-comment ml-2"></i> <%= gossip.comments.count %></span>
       </div>
     </div>
   </div>
 <% end %>
-
-
-
-

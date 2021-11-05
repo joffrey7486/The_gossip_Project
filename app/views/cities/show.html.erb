@@ -1,16 +1,38 @@
-<h1><%= @city.name %></h1>
+<h1>Tous les ragots de <%= @city.name %></h1>
 
-<div class="row row-cols-1 row-cols-md-4">
-    <% @all_city_gossips.each do |gossip| %>
-    <div class="col">
-        <div class="card h-100">
-            <div class="card-body">
-                <h5 class="card-title"><a href="/gossips/<%=gossip.id%>"><%= gossip.title %></a></h5>
-                <p class="card-text"><%= gossip.content %></p>
-                <h6 class="card-subtitle mb-2 text-end fst-italic text-muted"><%= gossip.user.first_name %> <%= gossip.user.last_name %></h6>
-            </div>
-        </div>
+<!-- Affiche tous les gossips en base de donnée -->
+<% @all_city_gossips.each do |gossip| %>
+  <div class="card card-<%= rand(1..5) %>">
+    <div class="media forum-item"> 
+      <a href="<%= gossip.user.avatar_link %>"><img src="<%= gossip.user.avatar_link %>" class="mr-3 rounded-circle border" alt="User" width="50"></a>
+      <div>
+        <h6><a href="<%= gossip_path(gossip.id) %>" class="text-body"><%= gossip.title %></a></h6>
+        <p class="text-secondary"><%= gossip.content %></p>
+        <p class="text-muted fw-light"><a href="<%= user_path(gossip.user_id) %>"><%= gossip.user.first_name %> <%= gossip.user.last_name %></a> l'a comméré il y a <span class="text-secondary fw-bold"><%= time_ago_in_words(gossip.created_at) %></span></p>
+      </div>
+      <div class="text-muted small text-center ">
+      
+        <% if logged_in? %>
+          <% if Like.find_by(user_id: current_user.id, gossip_id: gossip.id) %> 
+              <a href="<%= gossip_like_path(gossip.id, current_user.id) %>" data-method="delete">
+            <% else %>
+              <a href="<%= gossip_likes_path(gossip.id, :index) %>" data-method="post">          
+            <% end %>
+            <%= gossip.likes.count %> <i class="fa<%= Like.find_by(user_id: current_user.id, gossip_id: gossip.id) ? "s" : "r" %> fa-heart ml-2"></i></a>
+          <% else %>  
+            <%= gossip.likes.count %> <i class="far fa-heart ml-2"></i>
+          <% end %>	
+        <span><i class="far fa-comment ml-2"></i> <%= gossip.comments.count %></span>
+      </div>
     </div>
-    <% end %>
-    </div>
-</div>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
