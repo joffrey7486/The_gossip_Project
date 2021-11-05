@@ -3,11 +3,8 @@ class LikesController < ApplicationController
   before_action :authenticate_user, only: [:create, :destroy]
 
   def create
-    puts "#"*80
-    puts params[:format]
     @like = Like.create(user_id: current_user.id, gossip_id: params[:gossip_id])
     redirect_to :root
-
   end
 
   def destroy
