@@ -24,6 +24,7 @@ Voici les requis pour la version initiale :
 - Version initiale
 - [Rev 1](https://github.com/joffrey7486/The_gossip_Project/commit/54ab88e9723639ff56a50c1ec96f2c6aa69770eb) : Appliquer la méthode REST pour la gestion des potins
 - [Rev 2](https://github.com/joffrey7486/The_gossip_Project/commit/f93e01ba018733301add6f318f14890d1c295e22) : Mettre en place le CRUD pour les Gossips + commencer à améliorer le front-end
+- [Rev 3](https://github.com/joffrey7486/The_gossip_Project/commit/d7fc0004f00111c1f63d0ddcac8746a76eb23525) : Mettre en place un système de login avec gestion des mots de passe et des restrictions d'actions utilisateurs, puis un système pour liker/de-liker les ragots. Amélioration du front par la même occasion
 
 ## 3. Prérequis à l'installation
 
